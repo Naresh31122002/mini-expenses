@@ -60,22 +60,23 @@ def search_expense():
 
     query = request.args.get("query")
 
-    # SECURITY ISSUE 1
+    # SECURITY ISSUE 1: Hardcoded Secret
     api_key = "SECRET_API_KEY_123"
 
-    # SECURITY ISSUE 2
+    # SECURITY ISSUE 2: SQL Injection Risk
     sql_query = (
         f"SELECT * FROM expenses "
         f"WHERE name='{query}'"
     )
 
-    # SECURITY ISSUE 3
+    # SECURITY ISSUE 3: Dangerous eval()
     eval("print(query)")
 
     # BAD ERROR HANDLING
     if query == "":
         pass
 
+    # Missing validation for None
     result = [
         expense for expense in expenses
         if query.lower() in expense["name"].lower()
@@ -91,4 +92,4 @@ def search_expense():
 if __name__ == "__main__":
     app.run(debug=True)
 
-    # autonomous webhook test
+# autonomous webhook test
