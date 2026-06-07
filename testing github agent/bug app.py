@@ -54,7 +54,7 @@ def total():
     })
 
 
-# NEW FEATURE (INTENTIONAL BUGS)
+# NEW FEATURE WITH INTENTIONAL BUGS
 @app.route("/search", methods=["GET"])
 def search_expense():
 
